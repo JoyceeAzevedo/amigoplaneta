@@ -1,0 +1,8 @@
+Muitos condomínios não possuem um descarte correto para lixo toxico. Pensando nisso
+criaremos uma API para incentivo do descarte de pilhas de forma adequada.
+Inicialmente o morador irá separar as pilhas e levar ao local de descarte. Nesse lugar terá um
+responsável para verificar se o descarte está adequado, após verificar o responsável irá gerar
+um código para que o morador insira no aplicativo e com isso acumule pontos para desconto
+no seu condomínio.
+Os pontos acumulados poderão ser utilizados para pagamentos de boleto utilizando o app do
+mercado pago.
