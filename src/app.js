@@ -1,30 +1,44 @@
-const express = require ('express');
-const mongoosse = require ('mongoose');
-const app = express();
+const express = require("express")
+const mongoose = require("mongoose")
+const bodyParser = require('body-parser');
 
-mongoosse.connect('mongodb+srv://admin:admin@projetofinal-pbwau.mongodb.net/test?retryWrites=true&w=majority',{
-userNewURLParser: true,
-useUnifiedTopology: true,
-useCreateindex: true
+const app = express()
 
-}).then(() => {
-    console.log('Conectado com o mongoDB')
-}).catch((err) => {
-    console.log('Houve um erro ao se conectar: '+err)
+//String de conexão com o mongodb
+//porta padrão do mongo: 27017
+//banco de dados utilizado: reprograma
+
+mongoose.connect("mongodb://admin:reprograma1@ds225902.mlab.com:25902/reprogramameli",  { useNewUrlParser: true });
+
+//representação da conexão com o banco de dados 
+let db = mongoose.connection;
+
+//após a conexão, caso ocorra algum erro, será logado o erro
+db.on("error", console.log.bind(console, "connection error:"))
+
+//uma vez que a conexão esteja aberta, será exebida essa mensagem
+db.once("open", function (){
+  console.log("conexão feita com sucesso.")
 })
 
+//rotas
+const index = require("./routes/index")
+const usuario = require("./routes/usuario")
 
-//app.get('/', (req, res)=>{
- //return res.send('Projeto Sucesso');
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*")
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  )
+  next()
+})
 
-//});
+app.use(bodyParser.json());
 
-app.use(express.json());
+app.use("/", index)
+app.use("/usuario", usuario)
 
-app.use(require('.routes'));
 
-//interpretar no formato json
+module.exports = app
 
-app.listen(3000,()=>{
-console.log('Servidor Online');
-});
