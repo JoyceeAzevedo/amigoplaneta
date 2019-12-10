@@ -1,6 +1,6 @@
-const Usuarios = require('../models/usuario');
+const Usuarios = require('../models/Usuario');
 // meus usuarios..
-const fs = require('fs');
+//const fs = require('fs');
 
 exports.get = (req, res) => {
   Usuarios.find(function (err, usuarios) {
@@ -16,7 +16,7 @@ exports.getById = (req, res) => {
     if (err) return res.status(500).send(err);
 
     if (!usuario) {
-      return res.status(200).send({ message: `Infelizmente não localizamos a usuario de id: ${usruarioId}` });
+      return res.status(200).send({ message: `Infelizmente não localizamos a usuario de id: ${usuarioId}` });
     }
 
     res.status(200).send(usuario);
@@ -24,7 +24,9 @@ exports.getById = (req, res) => {
 }
 
 exports.post = (req, res) => {
+  console.log(req.body)
   let usuario = new Usuarios(req.body);
+  console.log(usuario)
 
   usuario.save(function (err) {
     if (err) res.status(500).send(err);
@@ -35,13 +37,13 @@ exports.post = (req, res) => {
   }
 
 exports.postPontos = (req, res) => {
-  const alunaId = req.params.id
+  const usuarioId = req.params.id
 
   Usuarios.findById(alunaId, function (err, usuario) {
     if (err) return res.status(500).send(err.message);
 
     if (!usuario) {
-      return res.status(200).send({ message: `Infelizmente não localizamos a usuario de id: ${alunaId}` });
+      return res.status(200).send({ message: `Infelizmente não localizamos a usuario de id: ${usuarioId}` });
     }
     
 
