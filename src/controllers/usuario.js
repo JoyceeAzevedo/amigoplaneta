@@ -1,5 +1,5 @@
 const Usuarios = require('../models/usuario');
-
+// meus usuarios..
 const fs = require('fs');
 
 exports.get = (req, res) => {
