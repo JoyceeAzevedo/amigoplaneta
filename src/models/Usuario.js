@@ -1,11 +1,13 @@
 const mongoose = require ('mongoose');
+const { pontos } = require('./pontos');
 
 const schemaUsuario = new mongoose.Schema({
 
 name:{type:String},
+cpf:{type:String},
 email:{type:String},
 senha:{type:String},
-pontos:{type:String},
+totalpontos: {type: Number}
 
 });
 

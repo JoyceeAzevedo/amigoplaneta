@@ -1,11 +1,10 @@
 const mongoose = require ('mongoose');
-//agora vai!!!
-const shemaUser = new mongoose.Schema({
 
-codigo:{Type:String},
-id:{Type:String},
+const SchemaUsuarioPontos = new mongoose.Schema({
 
+totalpontos:{type:Number},
+gerador:{type:String}
 
 });
 
-module.exports = mongoose.model('Pontos',schemaPontos);
+module.exports = mongoose.model('totalpontos',SchemaUsuarioPontos);
