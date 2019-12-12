@@ -43,7 +43,7 @@ exports.postPontos = (req, res) => {
     if (err) return res.status(500).send(err.message);
 
     if (!usuario) {
-      return res.status(200).send({ message: `Infelizmente não localizamos a usuario de id: ${usuarioId}` });
+      return res.status(200).send({ message: `Infelizmente você não tem pontos: ${pontosId}` });
     }
     
 
@@ -62,10 +62,10 @@ exports.update = (req, res) => {
     })
 }
 
-exports.deletarAluna = (req, res) => {
-  const idAluna = req.params.id;
+exports.deletarPontos = (req, res) => {
+  const idUsuario = req.params.id;
 
-  Usuarios.findById(idAluna, function(err, usuario) {
+  Usuarios.findById(idUsuario, function(err, usuario) {
     if (err) return res.status(500).send(err);
 
     if (!usuario) {
@@ -74,7 +74,7 @@ exports.deletarAluna = (req, res) => {
 
     usuario.remove(function (err){
       if (!err) {
-        res.status(200).send({ message: 'Aluna removida com sucesso...' });
+        res.status(200).send({ message: 'Pontos removidos...' });
       } 
     })
 

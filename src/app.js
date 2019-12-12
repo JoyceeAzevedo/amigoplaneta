@@ -40,6 +40,11 @@ app.use(bodyParser.json());
 app.use("/", index)
 app.use("/usuario", usuario)
 
+app.use(express.static('doc'))
+app.get('/api-doc',(req,res)=>{
+res.sendFile(__dirname + '/doc/index.html');
+
+})
 
 module.exports = app
 
