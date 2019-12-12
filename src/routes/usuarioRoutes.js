@@ -38,10 +38,6 @@ router.post("/:id/pontos", controller.postPontos)
 router.post("/:id/pontos", controller.postPontos)
 router.put("/:id", controller.update)
 
-
-
-
-
 //router.delete("/:id", controller.deletarPontos)
 
 module.exports = router
