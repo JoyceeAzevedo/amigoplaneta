@@ -6,6 +6,7 @@ const calcularqtpontos = (quantidades, calcularqtpontos) => {
 
   
 }
+//teste
 
 const getAll = (request, response) => {
   pokemonsModel.find((error, pokemons) => {
