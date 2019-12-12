@@ -39,6 +39,7 @@ app.use(bodyParser.json());
 
 app.use("/", index)
 app.use("/usuario", usuario)
+//app.use("/pontos", pontos)
 
 app.use(express.static('doc'))
 app.get('/api-doc',(req,res)=>{

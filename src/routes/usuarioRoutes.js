@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const controller = require("../controllers/usuarioControllers")
-
+const Pontos = require("../controllers/PontosControllers")
 
 /**
  * @api {get} /user/:id Request User information
@@ -36,7 +36,7 @@ router.post("/", controller.post)
 router.post("/usuario/:id/pontos", controller.post)
 router.post("/:id/pontos", controller.postPontos)
 router.post("/:id/pontos", controller.postPontos)
-router.put("/:id", controller.update)
+router.put("/:usuarios/", controller.update)
 
 //router.delete("/:id", controller.deletarPontos)
 
