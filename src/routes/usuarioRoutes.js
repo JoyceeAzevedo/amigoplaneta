@@ -30,6 +30,8 @@ const pontos = require("../controllers/PontosControllers")
  */
 
 
+ //
+
 router.get("/", controller.get)
 router.get("/:id", controller.getById)
 router.post("/", controller.post)
