@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const controller = require("../controllers/usuarioControllers")
-const Pontos = require("../controllers/PontosControllers")
+const pontos = require("../controllers/PontosControllers")
 
 /**
  * @api {get} /user/:id Request User information

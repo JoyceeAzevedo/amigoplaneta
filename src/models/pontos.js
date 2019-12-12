@@ -1,10 +1,10 @@
-const mongoose = require ('mongoose');
+const mongoose = require("mongoose");
 
-const SchemaPontos = new mongoose.Schema({
+const Schema = mongoose.Schema;
 
+const PontosSchema = new Schema({
+  itemdescartado: { type: String, required: true },
+  quantidadeponto: { type: String, required: true },
+})
 
-geradorpontos:{type:String}
-
-});
-
-module.exports = mongoose.model('pontos', SchemaPontos);
+module.exports = mongoose.model('pontos',PontosSchema);

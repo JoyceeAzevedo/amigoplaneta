@@ -1,6 +1,5 @@
 const Usuarios = require('../models/Usuario');
 // meus usuarios..
-//const fs = require('fs');
 
 exports.get = (req, res) => {
   Usuarios.find(function (err, usuarios) {
@@ -39,11 +38,11 @@ exports.post = (req, res) => {
 exports.postPontos = (req, res) => {
   const usuarioId = req.params.id
 
-  Usuarios.findById(alunaId, function (err, usuario) {
+  Usuarios.findById(usuarioId, function (err, usuario) {
     if (err) return res.status(500).send(err.message);
 
     if (!usuario) {
-      return res.status(200).send({ message: `Infelizmente você não tem pontos: ${pontosId}` });
+      return res.status(200).send({ message: `Infelizmente você não tem pontos: ${usuarioId}` });
     }
     
 

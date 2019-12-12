@@ -1,72 +1,85 @@
-const Pontos = require('../models/pontos');
+const Pontuacao = require('../models/pontos');
 
-exports.get = (req, res) => {
-  Pontos.find(function (err, usuarios) {
-    if (err) res.status(500).send(err);
-    res.status(200).send(pontos);
-  })
+
+const calcularqtpontos = (quantidades, calcularqtpontos) => {
+  const calcularqtpontos = quantidades + pontos
+
+  
 }
 
-exports.getById = (req, res) => {
-  const pontosId = req.params.id
-
-  Pontos.findById(Id, function (err, pontos) {
-    if (err) return res.status(500).send(err);
-
-    if (!pontos) {
-      return res.status(200).send({ message: `Infelizmente não localizamos seus pontos: ${pontosId}` });
+const getAll = (request, response) => {
+  pokemonsModel.find((error, pokemons) => {
+    if (error) {
+      return response.status(500).send(error)
     }
 
-    res.status(200).send(pontos);
+    return response.status(200).send(pokemons)
   })
 }
 
-exports.post = (req, res) => {
-  console.log(req.body)
-  let pontos = new Pontos (req.body);
- 
-  usuario.save(function (err) {
-    if (err) res.status(500).send(err);
+const getById = (request, response) => {
+  const id = request.params.id
 
-    res.status(201).send(usuario);
-
-  })
-  }
-
-exports.postPontos = (req, res) => {
-  const usuarioId = req.params.id
-
-  Usuarios.findById(pontosId, function (err, usuario) {
-    if (err) return res.status(500).send(err.message);
-
-    if (!usuario) {
-      return res.status(200).send({ message: `Infelizmente você não tem pontos: ${pontosId}` });
+  return pontosModels.findById(id, (error, pokemon) => {
+    if (error) {
+      return response.status(500).send(error)
     }
-    
 
-  });
+    if (pontos) {
+      return response.status(200).send(pokemon)
+    }
 
+    return response.status(404).send('Você não tem pontos.')
+  })
 }
 
-exports.update = (req, res) => {  
-  Usuarios.update(
-    { _id: req.params.id },
-    { $set: req.body },
-    { upsert: true },
-    function (err) {
-      if (err) return res.status(500).send({ message: err });
-      res.status(200).send({ message: "Atualizado com sucesso!" });
-    })
+const add = (request, response) => {
+  const pontosModels = new Usuariopontos(request.body)
+
+  novoPokemon.save((error) => {
+    if (error) {
+      return response.status(500).send(error)
+    }
+
+    return response.status(201).send(novoPokemon)
+  })
 }
 
-exports.deletarPontos = (req, res) => {
-  const idUsuario = req.params.id;
+const remove = (request, response) => {
+  const id = request.params.id
 
-  Usuarios.findById(idpontos, function(err, pontos) {
-    if (err) return res.status(500).send(err);
+  pontosModels.findByIdAndDelete(id, (error, pokemon) => {
+    if (error) {
+      return response.status(500).send(error)
+    }
 
-    if (!usuar) {
-      return res.status(200).send({ message: `Infelizmente não localizamos a usuario de id: ${req.params.id}` })
+    if (pontos) {
+      return response.status(200).send(id)
+    }
 
+    return response.status(404).send('ponto não encontrado')
+  })
+}
 
-    }})}
+const update = (request, response) => {
+  const id = request.params.id
+  const pontosUpdate = request.body
+  const options = { new: true }
+
+  pontosModels.findByIdAndUpdate(
+    id,
+    pontosUpdate,
+    options,
+    (error, pontos) => {
+      if (error) {
+        return response.status(500).sned(error)
+      }
+
+      if (pontos) {
+        return response.status(200).send(pokemon)
+      }
+
+      return response.status(404).send('Ponto não encontrado.')
+    }
+  )
+}
