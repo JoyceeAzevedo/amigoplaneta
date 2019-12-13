@@ -7,7 +7,7 @@ const CuponsSchema = new Schema({
  //cupons:[String],
  numcupom:{type:String},
  
-
+//teste
 })
 
 module.exports = mongoose.model('cupons',CuponsSchema);
