@@ -6,21 +6,15 @@ const Usuarios = require('../models/Usuario')
 
 exports.Gerarcupons = (req, res) => {
   let numcumpom = Math.floor(Math.random() * 100);
-  let cupom = {numcupom: numcumpom}
+  let cupom = {numcupom: numcumpom.toString()}
   let Cupom = new Cupons(cupom);
-  Cupom.save(function (err) {
-    if (err) res.status(500).send(err);
+  Cupom.save()
 
-    res.status(201).send(Cupom);
-
-  })
-
-  const user = Usuarios.findById(req.params.id);
-  console.log(user);
-    user.cupons.push(numcumpom);
+  const user = req.params.id;
+  
     Usuarios.update(
-      { _id: req.params.id },
-      { $set: user },
+      { _id: user },
+      { $set: {cupons: numcumpom.toString()} },
       { upsert: true },
       function (err) {
         if (err) return res.status(500).send({ message: err });
