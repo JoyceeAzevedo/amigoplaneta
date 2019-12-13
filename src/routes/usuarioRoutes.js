@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const controller = require("../controllers/usuarioControllers")
+const CuponsControllers = require("../controllers/CuponsControllers")
 
 /**
  * @api {get} /user/:id Request User information
@@ -33,7 +34,7 @@ const controller = require("../controllers/usuarioControllers")
 
 router.get("/", controller.get)
 router.get("/usuario/:id", controller.getById)
-router.get("/:pontos", controller.getById)
+router.post("/cupons/:id", CuponsControllers.Gerarcupons)
 router.post("/", controller.post)
 router.post("/usuario/:id/pontos", controller.post)
 router.post("/pontos", controller.postPontos)

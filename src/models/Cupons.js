@@ -4,8 +4,9 @@ const Schema = mongoose.Schema;
 
 const CuponsSchema = new Schema({
  
- cupons:[String],
- qtdtem:{type:Number}
+ //cupons:[String],
+ numcupom:{type:String},
+ 
 
 })
 
