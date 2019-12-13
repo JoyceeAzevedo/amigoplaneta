@@ -1,33 +1,32 @@
-const Pontuacao = require('../models/pontos');
+const pontos = require('../models/Cupons');
 
 
-const calcularqtpontos = (quantidades, calcularqtpontos) => {
-  const calcularqtpontos = quantidades + pontos
-
-  
+function getRandomArbitrary(min, max) {
+  return Math.random() * 100;
 }
-//teste
+
 
 const getAll = (request, response) => {
-  pokemonsModel.find((error, pokemons) => {
+  treinadoresModel.find((error, treinadores) => {
     if (error) {
       return response.status(500).send(error)
     }
 
-    return response.status(200).send(pokemons)
+    return response.status(200).send(treinadores)
   })
 }
+
 
 const getById = (request, response) => {
   const id = request.params.id
 
-  return pontosModels.findById(id, (error, pokemon) => {
+  return pontos.findById(id, (error, pontos) => {
     if (error) {
       return response.status(500).send(error)
     }
 
     if (pontos) {
-      return response.status(200).send(pokemon)
+      return response.status(200).send(pontos)
     }
 
     return response.status(404).send('Você não tem pontos.')
@@ -35,21 +34,21 @@ const getById = (request, response) => {
 }
 
 const add = (request, response) => {
-  const pontosModels = new Usuariopontos(request.body)
+  const pontos = new Usuariopontos(request.body)
 
-  novoPokemon.save((error) => {
+  pontos.save((error) => {
     if (error) {
       return response.status(500).send(error)
     }
 
-    return response.status(201).send(novoPokemon)
+    return response.status(201).send(pontos)
   })
 }
 
 const remove = (request, response) => {
   const id = request.params.id
 
-  pontosModels.findByIdAndDelete(id, (error, pokemon) => {
+  pontos.findByIdAndDelete(id, (error, pontos) => {
     if (error) {
       return response.status(500).send(error)
     }
@@ -67,7 +66,7 @@ const update = (request, response) => {
   const pontosUpdate = request.body
   const options = { new: true }
 
-  pontosModels.findByIdAndUpdate(
+  pontos.findByIdAndUpdate(
     id,
     pontosUpdate,
     options,
@@ -77,7 +76,7 @@ const update = (request, response) => {
       }
 
       if (pontos) {
-        return response.status(200).send(pokemon)
+        return response.status(200).send(pontos)
       }
 
       return response.status(404).send('Ponto não encontrado.')

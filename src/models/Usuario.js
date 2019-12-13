@@ -1,5 +1,5 @@
 const mongoose = require ('mongoose');
-const {pontos} = require('./pontos')
+//const {pontos} = require('./pontos')
 
 const schemaUsuario = new mongoose.Schema({
 
@@ -8,19 +8,13 @@ const schemaUsuario = new mongoose.Schema({
     cpf:{type:String, required: true },
     email:{type:String, required: true },
     senha:{type:String, required: true },
-    totl:{type:String},
-    pontos: [pontos]
-
+    quantidadepontos:{type:Number},
+    qtdtem:{type:Number},
+    cupons:[String]
 
 });
 
-module.exports = mongoose.model('Usuario',schemaUsuario);
+
+module.exports = mongoose.model('Usuario',schemaUsuario)
 
 
-const SchemaUsuario = new Schema();
-replyschema.add({
-  usernamen: String,
-  timestamp: { type: Date, default: Date.now },
-  body: String,
-  replies: [replySchema]
-});

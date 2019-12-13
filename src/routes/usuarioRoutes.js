@@ -1,7 +1,6 @@
 const express = require("express")
 const router = express.Router()
 const controller = require("../controllers/usuarioControllers")
-const pontos = require("../controllers/PontosControllers")
 
 /**
  * @api {get} /user/:id Request User information
@@ -33,10 +32,11 @@ const pontos = require("../controllers/PontosControllers")
  //
 
 router.get("/", controller.get)
-router.get("/:id", controller.getById)
+router.get("/usuario/:id", controller.getById)
+router.get("/:pontos", controller.getById)
 router.post("/", controller.post)
 router.post("/usuario/:id/pontos", controller.post)
-router.post("/:id/pontos", controller.postPontos)
+router.post("/pontos", controller.postPontos)
 router.put("/:usuarios/", controller.update)
 
 //router.delete("/:id", controller.deletarPontos)

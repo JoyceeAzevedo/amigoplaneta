@@ -10,8 +10,8 @@ exports.get = (req, res) => {
 
 exports.getById = (req, res) => {
   const usuarioId = req.params.id
-
-  Usuarios.findById(Id, function (err, usuario) {
+  console.log('teste',req.params)
+  Usuarios.findById(usuarioId, function (err, usuario) {
     if (err) return res.status(500).send(err);
 
     if (!usuario) {
